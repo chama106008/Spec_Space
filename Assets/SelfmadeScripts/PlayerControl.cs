@@ -1,5 +1,7 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -17,9 +19,13 @@ public class PlayerControl : MonoBehaviour
 
 
     //〈移動〉
-    [SerializeField, Header("移動速度")]
-    private float _moveSpeed;
+    [SerializeField, Header("最高速度")]
+    private float _maxSpeed = 30;
+    [SerializeField, Header("加速度")]
+    private float _acceleration = 80f;
     private Vector2 _inputDirection;
+    [SerializeField] private float _groundResistance = 8f;
+    [SerializeField] private float _airResistance = 1f;
 
     //〈ジャンプ〉
     [SerializeField, Header("ジャンプ力")]
@@ -60,7 +66,34 @@ public class PlayerControl : MonoBehaviour
     //スクリプト内関数
     private void _Move()
     {
-        _rigid.linearVelocity = new Vector2(_inputDirection.x * _moveSpeed, _rigid.linearVelocity.y);
+        Vector2 velocity = _rigid.linearVelocity;
+
+        if (_onGround)
+        {
+            // 入力を「加速」として加える
+            velocity.x += _inputDirection.x * _acceleration * Time.fixedDeltaTime;
+        }
+        else
+        {   
+            // 空中では制御を緩めに
+            velocity.x += _inputDirection.x * _acceleration / _groundResistance * _airResistance * Time.fixedDeltaTime;
+        }
+
+            float resistance =
+                _onGround ? _groundResistance : _airResistance;
+
+        float factor = 1f - resistance * Time.fixedDeltaTime;
+        factor = Mathf.Clamp01(factor);
+        velocity.x *= factor;
+
+        // 最高速度で補正
+        if (velocity.x > 0) velocity.x = Mathf.Min(velocity.x, _maxSpeed);
+        else velocity.x = Mathf.Max(velocity.x, -1 * _maxSpeed);
+        if (velocity.y > 0) velocity.y = Mathf.Min(velocity.y, _maxSpeed);
+        else velocity.y = Mathf.Max(velocity.y, -1 * _maxSpeed);
+
+        _rigid.linearVelocity = velocity;
+
     }
 
     //------コントローラー処理------
