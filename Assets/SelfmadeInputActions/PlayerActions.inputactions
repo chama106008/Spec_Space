@@ -171,8 +171,8 @@
                 {
                     "name": "",
                     "id": "087c0f77-81f4-4dd3-9384-331a935346fc",
-                    "path": "<Keyboard>/q",
-                    "interactions": "Press(behavior=1)",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "AccelerateOn",
@@ -182,7 +182,7 @@
                 {
                     "name": "",
                     "id": "47246850-0189-4311-867d-bdf41389343e",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/e",
                     "interactions": "Press(behavior=1)",
                     "processors": "",
                     "groups": "",

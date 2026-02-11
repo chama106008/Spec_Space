@@ -1534,6 +1534,8 @@ MonoBehaviour:
   _groundResistance: 8
   _airResistance: 1
   _jumpPower: 300
+  zeroFriction: {fileID: 6200000, guid: b5b9fab59d3085d4a9dfaf5be0a6f011, type: 2}
+  normal: {fileID: 6200000, guid: a30d62120d6c7524c93b155904c580f0, type: 2}
 --- !u!114 &1207322468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1628,11 +1630,35 @@ MonoBehaviour:
     m_ActionId: 8da80281-ea7c-49bf-a647-41119a9562e3
     m_ActionName: 'Player/SlipThroughOff[/Keyboard/e]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1207322467}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: OnAccelerateOn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 171bcdcc-22c3-404b-b0a7-c1fa2418c8fc
     m_ActionName: 'Player/AccelerateOn[/Keyboard/q]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1207322467}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: OnAccelerateOff
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 82a23e90-01bf-4103-a737-63bb6d083820
     m_ActionName: 'Player/AccelerateOff[/Keyboard/q]'
   - m_PersistentCalls:

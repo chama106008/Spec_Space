@@ -31,6 +31,10 @@ public class PlayerControl : MonoBehaviour
     [SerializeField, Header("ÉWÉÉÉìÉvóÕ")]
     private float _jumpPower;
 
+    //ÅqñÄéCÅr
+    public PhysicsMaterial2D zeroFriction;
+    public PhysicsMaterial2D normal;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -132,5 +136,20 @@ public class PlayerControl : MonoBehaviour
         _rigid.mass = 1f;
         _rigid.gravityScale = 1f;
 
+    }
+
+    public void OnAccelerateOn(InputAction.CallbackContext context)
+    {   
+        if (!context.performed) return;
+        _groundResistance *= (-3);
+        _airResistance *= (-3);
+        _collider.sharedMaterial = zeroFriction;
+    }
+    public void OnAccelerateOff(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        _groundResistance = _groundResistance / (-3);
+        _airResistance = _airResistance / (-3);
+        _collider.sharedMaterial = normal;
     }
 }
