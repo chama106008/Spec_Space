@@ -134,7 +134,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (!context.performed) return;
         _rigid.mass = 1f;
-        _rigid.gravityScale = 1f;
+        _rigid.gravityScale = 2f;
 
     }
 

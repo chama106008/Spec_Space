@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class GoalFlag : MonoBehaviour
 {
+
+    [SerializeField] private StageClear stageClear;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,7 +22,9 @@ public class GoalFlag : MonoBehaviour
         if (collision != null && collision.gameObject.tag == "Player")
         {
             Debug.Log("Complete!!");
-            Destroy(gameObject); 
+            Destroy(gameObject);
+
+            stageClear.Clear(collision.gameObject);
         }
     }
 }

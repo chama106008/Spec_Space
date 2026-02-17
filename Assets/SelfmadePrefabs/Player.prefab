@@ -249,7 +249,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -492,7 +492,7 @@ MonoBehaviour:
   _acceleration: 80
   _groundResistance: 8
   _airResistance: 1
-  _jumpPower: 300
+  _jumpPower: 500
   zeroFriction: {fileID: 6200000, guid: b5b9fab59d3085d4a9dfaf5be0a6f011, type: 2}
   normal: {fileID: 6200000, guid: a30d62120d6c7524c93b155904c580f0, type: 2}
 --- !u!1 &5707279837388695683
